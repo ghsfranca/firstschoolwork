@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.json())
         .then(data => {
             const criador = data[0];
-            document.getElementById('avatar').src = criador.avatar || 'assets/img/naoeia.jpg'; 
+            document.getElementById('avatar').src = criador.avatar || 'assets/img/naoeia.jpg';
             document.getElementById('nomeCriador').textContent = criador.nome;
             document.getElementById('cursoCriador').textContent = criador.curso;
             document.getElementById('turmaCriador').textContent = criador.turma;
@@ -21,21 +21,19 @@ document.addEventListener('DOMContentLoaded', () => {
             if (criador.git) {
                 const gitLink = document.createElement('a');
                 gitLink.href = criador.git;
-                gitLink.textContent = 'GitHub';
-                gitLink.classList.add('me-3');
+                gitLink.classList.add('fab', 'fa-github', 'fa-lg', 'me-3')
                 linksSociaisDiv.appendChild(gitLink);
             }
             if (criador.twitter) {
                 const twitterLink = document.createElement('a');
                 twitterLink.href = criador.twitter;
-                twitterLink.textContent = 'Twitter';
-                twitterLink.classList.add('me-3');
+                twitterLink.classList.add('fab', 'fa-twitter', 'fa-lg', 'me-3')
                 linksSociaisDiv.appendChild(twitterLink);
             }
             if (criador.insta) {
                 const instaLink = document.createElement('a');
                 instaLink.href = criador.insta;
-                instaLink.textContent = 'Instagram';
+                instaLink.classList.add('fab', 'fa-instagram', 'fa-lg', 'me-3')
                 linksSociaisDiv.appendChild(instaLink);
             }
         })
@@ -51,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(data => {
                 const seriesList = data.results;
                 const carouselContainer = document.getElementById('carouselItems');
-                carouselContainer.innerHTML = ''; 
+                carouselContainer.innerHTML = '';
                 seriesList.forEach((series, index) => {
                     const isActive = index === 0 ? 'active' : '';
                     carouselContainer.innerHTML += `
@@ -75,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(data => {
                 const seriesList = data.results;
                 const newSeriesContainer = document.getElementById('novasSeries');
-                newSeriesContainer.innerHTML = ''; 
+                newSeriesContainer.innerHTML = '';
                 seriesList.forEach(series => {
                     newSeriesContainer.innerHTML += `
                         <div class="col">
@@ -107,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <img src="${IMAGE_BASE_URL}${series.poster_path}" class="card-img-top" alt="${series.name}">
                                 <div class="card-body">
                                     <h5 class="card-title">${series.name}</h5>
-                                    <a href="details.html?id=${series.id}" class="btn btn-primary">Detalhes</a>
+                                    <a href="detalhes.html?id=${series.id}" class="btn btn-primary">Detalhes</a>
                                 </div>
                             </div>
                         </div>`;
