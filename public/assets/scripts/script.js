@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <div class="card-body">
                                     <h5 class="card-title">${series.name}</h5>
                                     <p class="card-text">${series.overview.substring(0, 100)}...</p>
-                                    <a href="details.html?id=${series.id}" class="btn btn-primary">Detalhes</a>
+                                    <a href="detalhes.html?id=${series.id}" class="btn btn-primary">Detalhes</a>
                                 </div>
                             </div>
                         </div>`;
