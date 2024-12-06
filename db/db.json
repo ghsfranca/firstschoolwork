@@ -2,7 +2,7 @@
     "criador": [
         {
             "nome": "Guilherme França",
-            "avatar":"./assets/img/guiavatar.jpg",
+            "avatar": "./assets/img/guiavatar.jpg",
             "curso": "Ciências da Computação - Puc Lourdes",
             "turma": "G1/T1",
             "email": "ghsfranca@gmail.com",
@@ -12,14 +12,13 @@
             "insta": "https://www.instagram.com/ghsfranca/"
         }
     ],
-    "series": [
+    "favorites": [
         {
-            "nome": "a",
-            "imagem": "a.jpg",
-            "detalhes": "lorem"
+            "id": "",
+            "name": "",
+            "gender": "",
+            "poster_path": "",
+            "overview": ""
         }
     ]
 }
-    
-
-
