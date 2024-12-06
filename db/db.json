@@ -1,1 +1,14 @@
-{}
+{
+    "criador": [
+        {
+            "nome": "Guilherme França",
+            "curso": "Ciências da Computação - Puc Lourdes",
+            "turma": "G1/T1",
+            "email": "ghsfranca@gmail.com",
+            "bio": "Opa, sou o Gui França, tenho 21 anos e tô no primeiro semestre de CompSci, prazer.",
+            "git": "https://github.com/ghsfranca",
+            "twitter": "https://twitter.com/ghsfpvd",
+            "insta": "https://www.instagram.com/ghsfranca/"
+        }
+    ]
+}
