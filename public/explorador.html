@@ -24,11 +24,35 @@
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Search">
-            <button class="btn btn-outline-success my-2 ml-4" style="margin-left: 10px;" type="submit">Pesquisa</button>
+            <input class="form-control mr-sm-2" type="search" id="searchInput" placeholder="Pesquisar"
+                aria-label="Search">
+            <button class="btn btn-outline-success my-2 ml-4" id="searchButton" style="margin-left: 10px;"
+                type="submit">Pesquisa</button>
         </nav>
 
-        <section id="results" class="row row-cols-1 row-cols-md-4 g-4">
+        <div class="d-flex align-items-center justify-content-center" id="welcome">
+            <div class="text-center row">
+                <div class=" mt-5">
+                    <p class="fs-3"> <span class="text-primary">Bem vindo!</span></p>
+                    <p class="lead">
+                        Preencha a barra de pesquisa com a série desejada!
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-none align-items-center justify-content-center" id="noResults">
+            <div class="text-center row">
+                <div class=" mt-5">
+                    <p class="fs-3"> <span class="text-danger">Oops!</span></p>
+                    <p class="lead">
+                        Nenhum resultado encontrado!
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <section id="results" class="row row-cols-1 row-cols-md-4 g-4 mt-2">
 
 
 

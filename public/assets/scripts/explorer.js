@@ -4,10 +4,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('searchInput');
     const searchButton = document.getElementById('searchButton');
     const resultsSection = document.getElementById('results');
+    const welcomeSection = document.getElementById('welcome');
+    const noResultsSection = document.getElementById('noResults');
 
     async function searchSeries(query) {
         try {
             const response = await fetch(`${baseUrl}search/tv?api_key=${apiKey}&language=pt-BR&query=${query}`);
+            welcomeSection.classList.add("d-none")
             if (!response.ok) {
                 throw new Error('Erro ao buscar séries');
             }
@@ -21,8 +24,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function displayResults(series) {
         resultsSection.innerHTML = '';
+        noResultsSection.classList.add("d-none");
+        noResultsSection.classList.remove("d-flex");
         if (series.length === 0) {
-            resultsSection.innerHTML = '<p>Nenhuma série encontrada.</p>';
+            noResultsSection.classList.add("d-flex");
+            noResultsSection.classList.remove("d-none");
             return;
         }
 
@@ -58,16 +64,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    /*   searchButton.addEventListener('click', () => {
-           const query = searchInput.value.trim();
-           if (query) {
-               searchSeries(query);
-           } else {
-               alert('Digite um texto para pesquisar!');
-           }
-       });
-       */
-    searchSeries("Arcane");
+    searchButton.addEventListener('click', () => {
+        const query = searchInput.value.trim();
+        if (query) {
+            searchSeries(query);
+        } else {
+            alert('Digite um texto para pesquisar!');
+        }
+    });
 
 });
 function redirectToDetails(seriesId) {
