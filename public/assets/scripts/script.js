@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const JSON_SERVER_URL = 'http://localhost:3000';
     const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500';
 
-    // Carregar dados do criador
+
     fetch(dbUrl)
         .then(response => response.json())
         .then(data => {
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Erro ao carregar os dados do criador:', error);
         });
 
-    // Função para carregar séries populares
+
     function loadPopularSeries() {
         const url = `${TMDB_BASE_URL}/tv/popular?api_key=${API_KEY}`;
         fetch(url)
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    // Função para carregar séries favoritas
+
     function loadFavoriteSeries() {
         fetch(`${JSON_SERVER_URL}/favorites`)
             .then(response => response.json())
@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>`;
                 });
 
-                // Adicionando o evento de deletar
+ 
                 document.querySelectorAll('.delete-btn').forEach(button => {
                     button.addEventListener('click', function () {
                         const seriesId = button.getAttribute('data-id');

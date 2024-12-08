@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const apiKey = 'd4073fb5d912ce7486c2d5c2a3dbca16';
     const baseUrl = 'https://api.themoviedb.org/3/';
-    const JSON_SERVER_URL = 'http://localhost:3000/favorites'; // URL do seu servidor JSONServer
+    const JSON_SERVER_URL = 'http://localhost:3000/favorites';
 
     const urlParams = new URLSearchParams(window.location.search);
     const seriesId = urlParams.get('id');
@@ -57,16 +57,15 @@ document.addEventListener('DOMContentLoaded', () => {
             <p>${data.overview || 'Sinopse não disponível.'}</p>
         `;
 
-        // Cria o botão "Adicionar aos Favoritos" depois de exibir os detalhes da série
+
         const addFavoriteButton = document.createElement('button');
         addFavoriteButton.id = 'add-favorite-btn';
         addFavoriteButton.textContent = 'Adicionar aos Favoritos';
-        addFavoriteButton.style.display = 'inline-block';  // Torna o botão visível
+        addFavoriteButton.style.display = 'inline-block';  
 
-        // Adiciona o evento ao botão
         addFavoriteButton.addEventListener('click', () => addFavoriteSeries(data));
 
-        // Adiciona o botão após a sinopse
+
         sinopseElement.appendChild(addFavoriteButton);
     }
 
