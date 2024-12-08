@@ -68,18 +68,23 @@ document.addEventListener('DOMContentLoaded', () => {
             const actorCard = document.createElement('div');
             actorCard.classList.add('col');
 
+            const profileImage = actor.profile_path
+                ? `https://image.tmdb.org/t/p/w500${actor.profile_path}`
+                : 'https://via.placeholder.com/150?text=No+Image';
+
             actorCard.innerHTML = `
-                <div class="card">
-                    <img src="https://image.tmdb.org/t/p/w500${actor.profile_path}" class="card-img-top" alt="${actor.name}">
-                    <div class="card-body">
-                        <h5 class="card-title">${actor.name}</h5>
-                        <p class="card-text">${actor.character}</p>
-                    </div>
+            <div class="card">
+                <img src="${profileImage}" class="card-img-top" alt="${actor.name}">
+                <div class="card-body">
+                    <h5 class="card-title">${actor.name}</h5>
+                    <p class="card-text">${actor.character}</p>
                 </div>
-            `;
+            </div>
+        `;
             castSection.appendChild(actorCard);
         });
     }
+
 
     fetchSeriesDetails();
     fetchCast();
