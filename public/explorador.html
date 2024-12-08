@@ -7,63 +7,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
-    <title>Document</title>
+    <title>Explorer</title>
 </head>
 
 <body>
 
     <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #111111;">
             <a class="navbar-brand d-flex align-items-center" href="index.html">
-
                 <img src="assets/img/naoeia.jpg" alt="Logo" style="height: 40px; margin-right: 10px;">
-
                 Dead of The Night
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <input class="form-control mr-sm-2" type="search" id="searchInput" placeholder="Pesquisar"
-                aria-label="Search">
-            <button class="btn btn-outline-success my-2 ml-4" id="searchButton" style="margin-left: 10px;"
-                type="submit">Pesquisa</button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                <input class="form-control mr-sm-2" type="search" id="searchInput" placeholder="Pesquisar"
+                    aria-label="Search">
+                <button class="btn btn-outline-success my-2 ml-4" style="margin-left: 10px;" id="searchButton" type="submit">Pesquisa</button>
+            </div>
         </nav>
+    </div>
 
-        <div class="d-flex align-items-center justify-content-center" id="welcome">
-            <div class="text-center row">
-                <div class=" mt-5">
-                    <p class="fs-3"> <span class="text-primary">Bem vindo!</span></p>
-                    <p class="lead">
-                        Preencha a barra de pesquisa com a série desejada!
-                    </p>
-                </div>
+    <div class="d-flex align-items-center justify-content-center" id="welcome">
+        <div class="text-center row">
+            <div class=" mt-5">
+                <p class="fs-3"> <span class="text-primary">Bem vindo!</span></p>
+                <p class="lead">
+                    Preencha a barra de pesquisa com a série desejada!
+                </p>
             </div>
         </div>
+    </div>
 
-        <div class="d-none align-items-center justify-content-center" id="noResults">
-            <div class="text-center row">
-                <div class=" mt-5">
-                    <p class="fs-3"> <span class="text-danger">Oops!</span></p>
-                    <p class="lead">
-                        Nenhum resultado encontrado!
-                    </p>
-                </div>
+    <div class="d-none align-items-center justify-content-center" id="noResults">
+        <div class="text-center row">
+            <div class=" mt-5">
+                <p class="fs-3"> <span class="text-danger">Oops!</span></p>
+                <p class="lead">
+                    Nenhum resultado encontrado!
+                </p>
             </div>
         </div>
+    </div>
 
-        <section id="results" class="row row-cols-1 row-cols-md-4 g-4 mt-2">
+    <section id="results" class="row row-cols-1 row-cols-md-4 g-4 mt-2">
 
 
 
-        </section>
+    </section>
 
-        <footer class="py-3 my-4">
-            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                <li class="nav-item"><a href="index.html" class="nav-link px-2 text-body-secondary">Home</a></li>
-            </ul>
-            <p class="text-center text-body-secondary">&copy; Trabalho DIW/2 2024</p>
-        </footer>
+    <footer class="py-3 my-4">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li class="nav-item"><a href="index.html" class="nav-link px-2 text-body-secondary">Home</a></li>
+        </ul>
+        <p class="text-center text-body-secondary">&copy; Trabalho DIW/2 2024</p>
+    </footer>
 
 
     </div>
