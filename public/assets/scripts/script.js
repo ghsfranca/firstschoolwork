@@ -21,19 +21,19 @@ document.addEventListener('DOMContentLoaded', () => {
             if (criador.git) {
                 const gitLink = document.createElement('a');
                 gitLink.href = criador.git;
-                gitLink.classList.add('fab', 'fa-github', 'fa-lg', 'me-3')
+                gitLink.classList.add('text-decoration-none', 'fab', 'fa-github', 'fa-lg', 'me-3')
                 linksSociaisDiv.appendChild(gitLink);
             }
             if (criador.twitter) {
                 const twitterLink = document.createElement('a');
                 twitterLink.href = criador.twitter;
-                twitterLink.classList.add('fab', 'fa-twitter', 'fa-lg', 'me-3')
+                twitterLink.classList.add('text-decoration-none', 'fab', 'fa-twitter', 'fa-lg', 'me-3')
                 linksSociaisDiv.appendChild(twitterLink);
             }
             if (criador.insta) {
                 const instaLink = document.createElement('a');
                 instaLink.href = criador.insta;
-                instaLink.classList.add('fab', 'fa-instagram', 'fa-lg', 'me-3')
+                instaLink.classList.add('text-decoration-none', 'fab', 'fa-instagram', 'fa-lg', 'me-3')
                 linksSociaisDiv.appendChild(instaLink);
             }
         })
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(response => response.json())
             .then(favorites => {
                 const favoritesContainer = document.getElementById('seriesFavoritas');
-                favoritesContainer.innerHTML = ''; // Limpa os itens anteriores
+                favoritesContainer.innerHTML = ''; 
                 favorites.forEach(series => {
                     favoritesContainer.innerHTML += `
                         <div class="col">
@@ -105,6 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <img src="${IMAGE_BASE_URL}${series.poster_path}" class="card-img-top" alt="${series.name}">
                                 <div class="card-body">
                                     <h5 class="card-title">${series.name}</h5>
+                                    <p class="card-text">${series.overview.substring(0, 100)}...</p>
                                     <a href="detalhes.html?id=${series.id}" class="btn btn-primary">Detalhes</a>
                                 </div>
                             </div>
