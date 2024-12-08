@@ -15,5 +15,74 @@
     max-height: 100%;
     max-width: 100%;
     object-fit: cover;
+}
+
+body {
+    background-color: #0e0c0c;
+    color: white;
+    text-align: center;
+
+}
+
+
+#criadorInfo h2,
+#criadorInfo h6,
+#criadorInfo p {
+    color: #0e0c0c;
+}
+
+
+footer {
+    color: white;
+}
+
+
+h2,
+h5,
+h6,
+p {
+    color: white;
+
+}
+
+
+.navbar {
+    background-color: #343a40;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: white;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+    color: #f4f5f7;
+}
+
+
+.container {
+    color: white;
+}
+
+.card {
+
+    background-color: #111111;
+
+    color: #0e0c0c;
+
+    border-radius: .5rem;
+}
+
+#criadorCard {
+    background-color: #111111;
+
+
+    color: #0e0c0c;
+
+}
+
+#criadorInfo h2,
+#criadorInfo h6,
+#criadorInfo p {
+    color: white;
 
 }
