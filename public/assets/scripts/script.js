@@ -41,7 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Erro ao carregar os dados do criador:', error);
         });
 
-    // Carregar séries populares
     function loadPopularSeries() {
         const url = `${TMDB_BASE_URL}/tv/popular?api_key=${API_KEY}`;
         fetch(url)
@@ -49,23 +48,40 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(data => {
                 const seriesList = data.results;
                 const carouselContainer = document.getElementById('carouselItems');
+                const indicatorsContainer = document.querySelector('.carousel-indicators');
                 carouselContainer.innerHTML = '';
+                indicatorsContainer.innerHTML = ''; 
+
                 seriesList.forEach((series, index) => {
                     const isActive = index === 0 ? 'active' : '';
+
+
                     carouselContainer.innerHTML += `
-                        <div class="carousel-item ${isActive}">
-                            <img src="${IMAGE_BASE_URL}${series.poster_path}" class="d-block w-100" alt="${series.name}">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>${series.name}</h5>
-                                <p>${series.overview}</p>
-                            </div>
-                        </div>`;
+                    <div class="carousel-item ${isActive}">
+                        <img src="${IMAGE_BASE_URL}${series.poster_path}" class="d-block w-100" alt="${series.name}">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>${series.name}</h5>
+                            <p>${series.overview}</p>
+                        </div>
+                    </div>`;
+
+                    indicatorsContainer.innerHTML += `
+                    <button type="button" data-bs-target="#carouselSeriesPopulares" data-bs-slide-to="${index}" class="${isActive}" aria-current="${isActive ? 'true' : ''}" aria-label="Slide ${index + 1}"></button>`;
+                
                 });
+
+                const carouselElement = document.getElementById('carouselSeriesPopulares');
+                const carouselInstance = bootstrap.Carousel.getInstance(carouselElement);
+                if (carouselInstance) {
+                    carouselInstance.dispose(); 
+                }
+                new bootstrap.Carousel(carouselElement); 
             })
             .catch(error => console.error('Erro ao carregar séries populares:', error));
     }
 
-    // Carregar novas séries
+
+
     function loadNewSeries() {
         const url = `${TMDB_BASE_URL}/tv/airing_today?api_key=${API_KEY}`;
         fetch(url)

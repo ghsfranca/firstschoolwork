@@ -2,3 +2,18 @@
     background: rgb(15, 39, 106);
     background: linear-gradient(184deg, rgba(15, 39, 106, 1) 0%, rgba(36, 12, 66, 1) 52%, rgba(11, 3, 40, 1) 100%);
 }
+
+.carousel-item {
+
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+
+}
+
+.carousel-item img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+
+}
