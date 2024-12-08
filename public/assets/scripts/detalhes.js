@@ -39,13 +39,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function displaySeriesDetails(data) {
         document.title = data.name;
+
         const titleElement = document.querySelector('#serie-titulo');
         titleElement.textContent = data.name;
+
+
+        const imageElement = document.querySelector('#serie-imagem img');
+        const imagePath = data.poster_path
+            ? `https://image.tmdb.org/t/p/w500${data.poster_path}`
+            : 'https://via.placeholder.com/300x400';
+        imageElement.src = imagePath;
+        imageElement.alt = `Imagem de ${data.name}`;
+
+
+        const sinopseElement = document.querySelector('#serie-sinopse');
+        sinopseElement.innerHTML = `
+        <h2 class="mb-2">Sinopse</h2>
+        <p>${data.overview || 'Sinopse não disponível.'}</p>
+    `;
     }
+
 
     function displayCast(cast) {
         const castSection = document.querySelector('#cast-section');
-        castSection.innerHTML = '';  
+        castSection.innerHTML = '';
 
         cast.forEach(actor => {
             const actorCard = document.createElement('div');
