@@ -78,6 +78,33 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => console.error('Erro ao carregar séries populares:', error));
     }
 
+    function loadNewSeries() {
+        const url = `${TMDB_BASE_URL}/tv/airing_today?api_key=${API_KEY}`;
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                const seriesList = data.results;
+                const newSeriesContainer = document.getElementById('novasSeries');
+                newSeriesContainer.innerHTML = '';
+                seriesList.forEach(series => {
+                    newSeriesContainer.innerHTML += `
+                        <div class="col">
+                            <div class="card">
+                                <img src="${IMAGE_BASE_URL}${series.poster_path}" class="card-img-top" alt="${series.name}">
+                                <div class="card-body">
+                                    <h5 class="card-title">${series.name}</h5>
+                                    <p class="card-text">${series.overview.substring(0, 100)}...</p>
+                                    <a href="detalhes.html?id=${series.id}" class="btn btn-primary">Detalhes</a>
+                                </div>
+                            </div>
+                        </div>`;
+                });
+            })
+            .catch(error => console.error('Erro ao carregar séries recentes:', error));
+    }
+
+
+
     // Função para carregar séries favoritas
     function loadFavoriteSeries() {
         fetch(`${JSON_SERVER_URL}/favorites`)
@@ -112,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => console.error('Erro ao carregar séries favoritas:', error));
     }
 
-    // Função para deletar série dos favoritos
+
     function deleteFavorite(seriesId) {
         fetch(`${JSON_SERVER_URL}/favorites/${seriesId}`, {
             method: 'DELETE',
@@ -120,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(response => response.json())
             .then(() => {
                 alert('Série removida dos favoritos');
-                loadFavoriteSeries();  // Recarregar a lista de favoritos
+                loadFavoriteSeries();
             })
             .catch(error => {
                 console.error('Erro ao remover série dos favoritos:', error);
@@ -128,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     }
 
-    // Carregar séries populares e favoritas ao carregar a página
+    loadNewSeries();
     loadPopularSeries();
     loadFavoriteSeries();
 });
