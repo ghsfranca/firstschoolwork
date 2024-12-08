@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const apiKey = 'd4073fb5d912ce7486c2d5c2a3dbca16';
     const baseUrl = 'https://api.themoviedb.org/3/';
+    const JSON_SERVER_URL = 'http://localhost:3000/favorites'; // URL do seu servidor JSONServer
 
     const urlParams = new URLSearchParams(window.location.search);
     const seriesId = urlParams.get('id');
@@ -43,7 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const titleElement = document.querySelector('#serie-titulo');
         titleElement.textContent = data.name;
 
-
         const imageElement = document.querySelector('#serie-imagem img');
         const imagePath = data.poster_path
             ? `https://image.tmdb.org/t/p/w500${data.poster_path}`
@@ -51,14 +51,24 @@ document.addEventListener('DOMContentLoaded', () => {
         imageElement.src = imagePath;
         imageElement.alt = `Imagem de ${data.name}`;
 
-
         const sinopseElement = document.querySelector('#serie-sinopse');
         sinopseElement.innerHTML = `
-        <h2 class="mb-2">Sinopse</h2>
-        <p>${data.overview || 'Sinopse não disponível.'}</p>
-    `;
-    }
+            <h2 class="mb-2">Sinopse</h2>
+            <p>${data.overview || 'Sinopse não disponível.'}</p>
+        `;
 
+        // Cria o botão "Adicionar aos Favoritos" depois de exibir os detalhes da série
+        const addFavoriteButton = document.createElement('button');
+        addFavoriteButton.id = 'add-favorite-btn';
+        addFavoriteButton.textContent = 'Adicionar aos Favoritos';
+        addFavoriteButton.style.display = 'inline-block';  // Torna o botão visível
+
+        // Adiciona o evento ao botão
+        addFavoriteButton.addEventListener('click', () => addFavoriteSeries(data));
+
+        // Adiciona o botão após a sinopse
+        sinopseElement.appendChild(addFavoriteButton);
+    }
 
     function displayCast(cast) {
         const castSection = document.querySelector('#cast-section');
@@ -73,18 +83,44 @@ document.addEventListener('DOMContentLoaded', () => {
                 : 'https://via.placeholder.com/150?text=No+Image';
 
             actorCard.innerHTML = `
-            <div class="card">
-                <img src="${profileImage}" class="card-img-top" alt="${actor.name}">
-                <div class="card-body">
-                    <h5 class="card-title">${actor.name}</h5>
-                    <p class="card-text">${actor.character}</p>
+                <div class="card">
+                    <img src="${profileImage}" class="card-img-top" alt="${actor.name}">
+                    <div class="card-body">
+                        <h5 class="card-title">${actor.name}</h5>
+                        <p class="card-text">${actor.character}</p>
+                    </div>
                 </div>
-            </div>
-        `;
+            `;
             castSection.appendChild(actorCard);
         });
     }
 
+
+    function addFavoriteSeries(series) {
+        const favoriteData = {
+            id: series.id,
+            name: series.name,
+            poster_path: series.poster_path,
+            overview: series.overview
+        };
+
+        fetch(JSON_SERVER_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(favoriteData),
+        })
+            .then(response => {
+                if (response.ok) {
+                    alert('Série adicionada aos favoritos!');
+                } else {
+                    throw new Error('Erro ao adicionar aos favoritos');
+                }
+            })
+            .catch(error => {
+                console.error('Erro ao adicionar série aos favoritos:', error);
+                alert('Erro ao adicionar aos favoritos');
+            });
+    }
 
     fetchSeriesDetails();
     fetchCast();
